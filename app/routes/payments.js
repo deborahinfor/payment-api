@@ -6,9 +6,9 @@ module.exports = function(app){
 		var id = req.params.id;
 
 		var connection = app.persistence.connectionFactory();
-		var pagamentoDao = new app.persistence.PaymentDao(connection);
+		var paymentDao = new app.persistence.PaymentDao(connection);
 
-		pagamentoDao.findByID(id, function(errors, result){
+		paymentDao.findByID(id, function(errors, result){
 			if(errors){
 				console.log('Error while searching a payment in database: '+ errors);
 				res.status(500).send(errors);
