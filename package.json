@@ -1,0 +1,24 @@
+{
+  "name": "payment-api",
+  "version": "1.0.0",
+  "description": "This is a node.js Payment API, powered by Express that provides the main functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deborahinfor/payment-api.git"
+  },
+  "keywords": [
+    "payment",
+    "api",
+    "nodejs"
+  ],
+  "author": "deborah lima <deborah.infor@gmail.com> (https://www.linkedin.com/in/deborahinfor/)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deborahinfor/payment-api/issues"
+  },
+  "homepage": "https://github.com/deborahinfor/payment-api#readme"
+}
