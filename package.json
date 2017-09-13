@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/deborahinfor/payment-api#readme",
   "dependencies": {
-    "express": "^4.15.4"
+    "consign": "^0.1.6",
+    "express": "^4.15.4",
+    "mysql": "^2.14.1"
   }
 }
