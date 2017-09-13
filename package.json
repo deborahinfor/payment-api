@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/deborahinfor/payment-api/issues"
   },
-  "homepage": "https://github.com/deborahinfor/payment-api#readme"
+  "homepage": "https://github.com/deborahinfor/payment-api#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
 }
