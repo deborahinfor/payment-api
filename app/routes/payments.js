@@ -24,4 +24,39 @@ module.exports = function(app){
 			return;
 		});
 	});
+
+	app.post("/payments/payment", function(req,res){
+		console.log('Processing the new payment requested.');
+
+		req.assert("payment.payment_type", "Type of payment is required").notEmpty();
+		req.assert("payment.amount", "Type of payment is required").notEmpty().isFloat();
+
+		var error = req.validationErrors();
+		if (error){
+			console.log("Validation errors were found.");
+			res.status(400).send(error);
+			return;
+		}
+
+		var payment = req.body["payment"];
+
+		payment.status = 'CREATED';
+		payment.date = new Date;
+
+		var connection = app.persistence.connectionFactory();
+		var paymentDao = new app.persistence.PaymentDao(connection);
+
+		paymentDao.create(payment, function(errors, result){
+			if(errors){
+				console.log('Error trying to insert into database: '+ errors);
+				res.status(500).send(errors);
+				return;
+			}
+
+		payment.id = result.insertId;
+		console.log('Pagamento criado');
+
+		res.status(201).json(result);
+		});
+	});
 }

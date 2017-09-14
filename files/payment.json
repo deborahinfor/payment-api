@@ -1,0 +1,8 @@
+{
+  "payment":{
+    "payment_type":"payment_api",
+    "amount":98.53 ,
+    "description":"inserting a payment by file",
+    "responsable_name":"Programmer"
+  }
+}
