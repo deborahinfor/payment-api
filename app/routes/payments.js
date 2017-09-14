@@ -63,7 +63,7 @@ module.exports = function(app){
 	app.put("/payments/payment/:id", function(req,res){
 		console.log('Confirming a payment.');
 
-		var payment = [];
+		var payment = {};
 		payment.id =  req.params.id;
 		payment.status = 'CONFIRMED';
 
@@ -80,5 +80,26 @@ module.exports = function(app){
 			res.status(201).json(result);
 		});
 	});
-	
+
+	app.delete("/payments/payment/:id", function(req,res){
+	console.log('Canceling a payment.');
+
+	var payment = {};
+	payment.id =  req.params.id;
+	payment.status = 'CANCELLED';
+
+	var connection = app.persistence.connectionFactory();
+	var paymentDao = new app.persistence.PaymentDao(connection);
+
+		paymentDao.updateStatus(payment, function(errors, result){
+			if(errors){
+				console.log('Error while cancelling payment into database:'+ errors);
+				res.status(500).send(errors);
+				return;
+			}
+			console.log('Payment cancelled');
+			res.status(204).json(result);//status 204 - No Content
+		});
+	});
+
 }
