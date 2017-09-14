@@ -10,6 +10,10 @@ PaymentDao.prototype.create = function(payment, callback){
 	this._connection.query('INSERT INTO payments SET ?', payment, callback);
 }
 
+PaymentDao.prototype.updateStatus = function(payment, callback){
+	this._connection.query('UPDATE payments SET status = ? WHERE id = ?', [payment.status,payment.id], callback);
+}
+
 module.exports = function(){
 	return PaymentDao;
 }
