@@ -21,7 +21,6 @@ module.exports = function(app){
 
 			console.log('Payment found : ' + JSON.stringify(result));
 			res.status(200).json(result);
-			return;
 		});
 	});
 
@@ -53,10 +52,28 @@ module.exports = function(app){
 				return;
 			}
 
-		payment.id = result.insertId;
-		console.log('Pagamento criado');
+			payment.id = result.insertId;
+			console.log('Payment created');
 
-		res.status(201).json(result);
+			res.location('/payments/payment/' + payment.id);
+
+			var response = {
+			payment_details: payment,
+			links:[
+				{
+				href:"http://localhost:3000/payments/payment/" + payment.id,
+				rel:"confirm",
+				method:"PUT"
+				},
+				{
+				href:"http://localhost:3000/payments/payment/" + payment.id,
+				rel:"cancel",
+				method:"DELETE"
+				}
+			]
+			}
+
+			res.status(201).json(response);
 		});
 	});
 
@@ -77,7 +94,18 @@ module.exports = function(app){
 				return;
 			}
 			console.log('Payment confirmed');
-			res.status(201).json(result);
+
+			var response = {
+			payment_details: payment,
+			links:[
+            	{
+				href:"http://localhost:3000/payments/payment/" + payment.id,
+				rel:"cancel",
+				method:"DELETE"
+				}
+			]
+		}
+			res.status(201).json(response);
 		});
 	});
 
