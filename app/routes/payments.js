@@ -38,6 +38,22 @@ module.exports = function(app){
 		}
 
 		var payment = req.body["payment"];
+		console.log(payment);
+
+		if(payment.payment_type == 'card'){
+			var card = req.body["card"];
+			console.log(card);
+
+			var cardClient = new app.services.cardClient();
+
+			cardClient.authorize(card,function(exception, request, response, results){
+				if(exception){
+					console.log(exception);
+					res.status(400).send(exception);
+					return;
+				}
+			});
+		}
 
 		payment.status = 'CREATED';
 		payment.date = new Date;

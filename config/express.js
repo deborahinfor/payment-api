@@ -12,6 +12,7 @@ module.exports = function(){
 consign({cwd: 'app'})
 	.include('routes')
 	.then('persistence')
+	.then('services')
 	.into(app);
 
 	return app;

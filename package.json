@@ -4,7 +4,8 @@
   "description": "This is a node.js Payment API, powered by Express that provides the main functions.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "consign": "^0.1.6",
     "express": "^4.15.4",
     "express-validator": "^4.1.1",
-    "mysql": "^2.14.1"
+    "mysql": "^2.14.1",
+    "restify-clients": "^1.5.1"
   }
 }

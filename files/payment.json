@@ -1,8 +1,15 @@
 {
   "payment":{
-    "payment_type":"payment_api",
-    "amount":98.53 ,
-    "description":"inserting a payment by file",
+    "payment_type":"card",
+    "amount":30.53 ,
+    "description":"Test payment by file",
     "responsable_name":"Programmer"
+  },
+   "card":{
+   "number":1234123412341123,
+   "company":"visa",
+   "yy":15,
+   "mm":12,
+   "cvv":123
   }
 }
