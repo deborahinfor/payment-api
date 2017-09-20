@@ -20,7 +20,7 @@ Once the dependencies are installed, you can run npm start or npm index.js or to
 how to use de application:
 
 	-To find a payment:
-	curl http://localhost:3000/payments/payment/1 -X GET -v -H "Content-type: application/json"
+	curl http://localhost:3000/payments/payment/1 -X GET -v -H "Content-type: application/json" | json_pp
 
 
 	-To register a payment: routes/payments.js :
@@ -35,7 +35,7 @@ how to use de application:
           "description": "Test payment by command line",
           "responsable_name":"Programmer"  
         }
-        }'
+        }' | json_pp
 
 	-To confirm a payment: routes/payments.js :
 	curl http://localhost:3000/payments/payment/2 -X PUT -v -H "Content-type: application/json" | json_pp
